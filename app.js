@@ -9,9 +9,10 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+const dbName = 'boatProject'; //nombre de la colección en la BBDD
 
 mongoose
-  .connect('mongodb://localhost/boatproject', {useNewUrlParser: true})
+  .connect(`mongodb://localhost/${dbName}`, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -53,6 +54,9 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 const index = require('./routes/index');
 app.use('/', index);
+
+const boats = require('./routes/boat.router');
+app.use('/boat', boats);
 
 
 module.exports = app;

@@ -1,0 +1,69 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1 style="font-weight: 100">New Boat</h1>
+    </div>
+
+    <div class="col-md-6">
+
+      <form action="/boat" method="POST">
+
+        <div class="form-group">
+          <label for="name-input">Name</label>
+          <input name="name" type="text" class="form-control" id="name-input" required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="type-input">Type</label>
+          <select name="type" class="form-control" id="type-input" required="true">
+            <option disabled="selected">Select on option</option>
+            <option>Yacht</option>
+            <option>Sailboat</option>
+            <option>Catamaran</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="capacity-input">Capacity</label>
+          <input name="capacity" type="number" class="form-control" id="capacity-input" required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="captain-input">Captain
+            <input type="radio" id="captain-input" name="captain" value="yes">Yes</label>
+            <input type="radio" id="captain-input" name="captain" value="no">No</label>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="port-list">Port</label>
+          <select name="port_id" class="form-control" id="port-list">
+            <option>Select</option>
+            {{#each ports}}     
+             <option value='{{_id}}'>{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="description-input">Description</label>
+          <textarea name="description" class="form-control" id="description-input"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="rate-input">Rate</label>
+          <input name="rate" type="number" placeholder="0.00 €" class="form-control" id="rate-input" required="true">
+        </div>
+
+        <div>
+          <label>Image</label>
+          <input type="file" name="photo"><br><br>
+        </div>
+    
+        <button type="submit" class="btn btn-dark">Save</button>
+      </form>
+    </div>
+
+  </div>
+</div>
