@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 require("dotenv").config();
 
 const bodyParser = require("body-parser");
@@ -13,29 +12,6 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
-=======
-require('dotenv').config();
-
-const bodyParser   = require('body-parser');
-const cookieParser = require('cookie-parser');
-const express      = require('express');
-const favicon      = require('serve-favicon');
-const hbs          = require('hbs');
-const mongoose     = require('mongoose');
-const logger       = require('morgan');
-const path         = require('path');
-
-const dbName = 'boatProject'; //nombre de la colección en la BBDD
-
-mongoose
-  .connect(`mongodb://localhost/${dbName}`, {useNewUrlParser: true})
-  .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-  })
-  .catch(err => {
-    console.error('Error connecting to mongo', err)
-  });
->>>>>>> 7220e9a89f078a9f2f12dd1b9dc88697e810d081
 
 require("./config/mongoose.config");
 require("./config/cloudinary.config");
@@ -102,8 +78,7 @@ app.use("/", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
-const boats = require('./routes/boat.router');
-app.use('/boat', boats);
-
+const boats = require("./routes/boat.routes");
+app.use("/boat", boats);
 
 module.exports = app;

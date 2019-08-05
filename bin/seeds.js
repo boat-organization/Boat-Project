@@ -3,6 +3,9 @@
 // To execute this seed, run from the root of the project
 // $ node bin/seeds.js
 
+
+
+/*
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/user.model");
