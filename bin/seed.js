@@ -3,7 +3,7 @@ const Port = require('../models/port.model')
 
 
 
-const dbName = 'boatProject';         //nombre de la colección en la BBDD
+const dbName = 'boatproject';         //nombre de la colección en la BBDD
 mongoose.connect(`mongodb://localhost/${dbName}`, { useNewUrlParser: true }); 
 Port.collection.drop()
 
