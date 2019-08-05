@@ -18,4 +18,8 @@ const boatModel = new Schema(
   }
 );
 
-module.exports = mongoose.model("Boat", boatModel);
+const Boat = mongoose.model("Boat", boatModel)
+
+module.exports = Boat
+
+
