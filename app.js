@@ -82,4 +82,7 @@ app.use("/auth", authRoutes);
 const boats = require("./routes/boat.routes");
 app.use("/boat", boats);
 
+const profileRoutes = require("./routes/profile.routes");
+app.use("/profile", profileRoutes);
+
 module.exports = app;

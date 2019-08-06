@@ -6,13 +6,14 @@ const Port = require('../models/port.model')
 
 const uploadCloud = require('../config/cloudinary.config');
 
-
+//MOSTRAR FORMULARIO DE BARCOS
 router.get('/', (req, res) => {
   Port.find({})
-  .then(allThePorts => res.render('boats', {ports: allThePorts} ))
+  .then(allThePorts => res.render('boat/boats', {ports: allThePorts} ))
   .catch(err => console.log('Hubo un error:', err))
 }) 
 
+//CREAMOS UN NUEVO BARCO A TRAVÉS DEL FORMULARIO
 router.post('/', uploadCloud.single('photo'), (req, res, next) => {
   const { name, type, capacity, captain, port_id, description, rate} = req.body  //port_id es el name del formulario
   const imgPath = req.file.url;
@@ -22,6 +23,13 @@ router.post('/', uploadCloud.single('photo'), (req, res, next) => {
   .then((boat) => res.redirect('/'))  //index
   .catch(err => console.log('Hubo un error:', err))
 })
+
+//EDICIÓN DE UN BARCO
+
+
+//ELIMINAR BARCO
+
+
 
 
 
