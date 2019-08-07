@@ -21,7 +21,7 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/user/search",
-    failureRedirect: "/login",
+    failureRedirect: "/auth/login",
     failureFlash: true,
     passReqToCallback: true
   })
@@ -64,7 +64,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
     newUser
       .save()
       .then(() => {
-        res.redirect("/login");
+        res.redirect("/auth/login");
       })
       .catch(err => {
         res.render("auth/signup", { message: "Something went wrong" });

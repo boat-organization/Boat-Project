@@ -6,6 +6,7 @@
 
   {{#if isOwner}}
   <a href="/user/owner/add">Add boat</a>
+  <a href="/user/owner/myBoats">My boats</a>
   {{/if}}
 
 
@@ -53,8 +54,8 @@
     <input name="capacity" type="number" class="form-control" id="capacity-input" required="true">
   </div>
 
-<button type="submit" class="btn btn-dark" id="elboton">Search</button>
- {{!-- </form> --}}
+  <button type="submit" class="btn btn-dark" id="elboton">Search</button>
+  {{!-- </form> --}}
 </div>
 
 <figure id="map"></figure>
@@ -72,7 +73,3 @@
     {{/each}}
   </div>
 </div>
-
-
-
-

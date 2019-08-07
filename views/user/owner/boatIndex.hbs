@@ -1,0 +1,25 @@
+<div class="container boat-index">
+
+
+  <h1 style="font-weight: 100">My Boats</h1>
+
+
+  {{#each boat}}
+  <h4>{{name}}</h4>
+  <p>{{description}}</p>
+  <img class="boat-picture" src="{{imgPath}}" alt="boat">
+  <p>{{description}}</p>
+  <p> {{port.name}}</p>
+
+  <a href="/user/owner/myBoats/edit/{{_id}}">Edit</a>
+
+  <form action="/user/owner/myBoats/delete/{{_id}}" method="post">
+    <button type="submit" class="btn btn-dark">Delete</button>
+  </form>
+
+  <hr>
+  {{/each}}
+
+
+
+</div>
