@@ -1,12 +1,12 @@
 <div>
   <img src="#" alt="image-profile">
-  <a href="/profile/menu"><img src="#" alt="menu"></a>
+  <a href="/profile"><img src="#" alt="menu"></a>
 </div>
 <div>
-  <h1>Were to navigate?</h1>
+  <h1>Where to navigate?</h1>
 </div>
 <div class="col-md-6">
-    <form action="/porfile/profile_search" method="post">
+    {{!-- <form action="/profile/map" method="post"> --}}
       <div class="form-group">
         <label for="homeport-list">Home port</label>
         <select name="port_id" class="form-control" id="homeport-list">
@@ -18,7 +18,7 @@
       </div>
         <div class="form-group">
         <label for="destinationport-list">Destination port</label>
-        <select name="port_id" class="form-control" id="destinationport-list">
+        <select name="port_id_2" class="form-control" id="destinationport-list">
           <option>Select</option>
           {{#each ports}}     
             <option value='{{_id}}'>{{name}}</option>
@@ -46,9 +46,11 @@
           <label for="capacity-input">Capacity</label>
           <input name="capacity" type="number" class="form-control" id="capacity-input" required="true">
         </div>
-
-      <button type="submit" class="btn btn-dark">Search</button>
-    </form>
+       <button type="submit" class="btn btn-dark" id="elboton">Search</button>
+    {{!-- </form> --}}
 </div>
 
-  
+<figure id='map'></figure>
+
+
+
