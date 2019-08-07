@@ -23,9 +23,15 @@ const uploadCloud = require("../config/cloudinary.config");
 router.get("/search", (req, res, next) => {
   let isOwner = req.user.role === "OWNER"; // variable para saber si es owner
   Port.find({})
-    .then(allThePorts =>
-      res.render("user/search", { ports: allThePorts, user: req.user, isOwner })
-    )
+    // .populate("boats")
+    .then(allThePorts => {
+      console.log(allThePorts[0].boats);
+      res.render("user/search", {
+        ports: allThePorts,
+        user: req.user,
+        isOwner
+      });
+    })
     .catch(err => console.log("Hubo un error:", err));
 });
 
@@ -44,7 +50,11 @@ router.post("/search/:id", (req, res, next) => {
 router.post("/search", (req, res, next) => {
   const portId = req.body.infoId;
   Port.findById(portId)
-    .then(thePort => res.json({ thePort }))
+    .populate("boats")
+    .then(thePort => {
+      console.log(thePort);
+      res.json({ thePort });
+    })
     .catch(err => console.log("Hubo un error:", err));
 });
 
@@ -88,7 +98,14 @@ router.post("/owner/add", uploadCloud.single("photo"), (req, res, next) => {
     imgPath,
     imgName
   }) //port es el nombre de la propiedad del modelo que coge como valor el port_id del formulario
-    .then(boat => res.redirect("/")) //index
+    .then(boat => {
+      Port.findByIdAndUpdate(port_id, { $push: { boats: boat._id } })
+        .populate("boats")
+        .then(port => {
+          console.log(port.boats);
+          res.redirect("/");
+        });
+    }) //index
     .catch(err => console.log("Hubo un error:", err));
 });
 

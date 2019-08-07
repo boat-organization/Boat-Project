@@ -9,7 +9,9 @@ const portModel = new Schema(
     location: {
       type: { type: String, default: "Point" },
       coordinates: [Number]
-    }
+    },
+    boats: [{ type: Schema.Types.ObjectId, ref: "Boat" }],
+
   },
   {
     timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" }
