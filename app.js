@@ -53,7 +53,7 @@ hbs.registerHelper("ifUndefined", (value, options) => {
   }
 });
 
-//! ENABLE AUTHENTICATION USING SESSION AND PASSPORT
+//! ENABLE AUTHENTICATION USING SESSION AND PASORT
 app.use(
   session({
     secret: "irongenerator",
