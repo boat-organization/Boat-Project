@@ -35,6 +35,21 @@ router.get("/search", (req, res, next) => {
     .catch(err => console.log("Hubo un error:", err));
 });
 
+//! MOSTRAR MAPA Y PUNTO EN EL MAPA
+
+router.post("/search", (req, res, next) => {
+  const portId = req.body.infoId; // nos traemos el infoId de axios que fue conseguido por el id del formulario
+  console.log(portId);
+  Port.findById(portId)
+    .then(thePort => {
+      Boat.find({ port: portId })
+
+        .then(theBoatsPort => res.json({ thePort, boats: theBoatsPort }))
+        .catch(err => console.log("Hubo un error:", err));
+    }) // Pasamos el valor de thePort a axios de nuevo
+    .catch(err => console.log("Hubo un error:", err));
+});
+
 //! MUESTRA PORT DROPDOWN EN FORMULARIO DE NEW BOAT
 router.get("/owner/add", (req, res, next) => {
   Port.find({})
