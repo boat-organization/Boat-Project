@@ -11,6 +11,7 @@
 
 </div>
 <div class="col-md-6">
+
   {{!-- <form action="/user/search" method="POST"> --}}
   <div class="form-group">
     <label for="homeport-list">Home port</label>
@@ -52,8 +53,26 @@
     <input name="capacity" type="number" class="form-control" id="capacity-input" required="true">
   </div>
 
-  <button type="submit" class="btn btn-dark" id="elboton">Search</button>
-  {{!-- </form> --}}
+<button type="submit" class="btn btn-dark" id="elboton">Search</button>
+ {{!-- </form> --}}
 </div>
 
 <figure id="map"></figure>
+
+
+<div>
+  <h1>Boats</h1>
+  <div class="container">
+
+    {{#each boats}}
+    <h3>{{name}}</h3>
+    <h4>Type:</h4>
+    <p>{{type}}</p>
+    <hr>
+    {{/each}}
+  </div>
+</div>
+
+
+
+

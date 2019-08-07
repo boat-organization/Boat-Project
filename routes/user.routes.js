@@ -22,33 +22,37 @@ const uploadCloud = require("../config/cloudinary.config");
 router.get("/search", (req, res, next) => {
   let isOwner = req.user.role === "OWNER"; // variable para saber si es owner
   Port.find({})
-    .then((
-      allThePorts //encuentra todos los puertos
-    ) =>
-      res.render("user/search", {
-        ports: allThePorts,
-        user: req.user,
-        isOwner
-        //renderiza todos los puertos, pasa la variable user, y vasa la variable is owner
-      })
-    )
-    .catch(err => console.log("Hubo un error:", err));
-});
+    .then((allThePorts) => res.render("user/search", {ports: allThePorts,user: req.user, isOwner}))
+    .catch(err => console.log("Hubo un error:", err))
+})
 
-//! MOSTRAR MAPA Y PUNTO EN EL MAPA
+// MOSTRAR BARCOS CUYO PUERTO ES EL ELEGIDO EN EL MAPA!!
+
+router.post('/search/:id', (req, res, next) => {
+  Boat.find({port: '5d49c5163c5a5e1ee00ae370'})
+  .then(boatsInPort => {
+    console.log(boatsInPort)
+    res.render('user/search', { boats: boatsInPort })
+  })
+  .catch(err => console.log('Hubo un error:', err))
+})
+
+
+
+
+
+// MOSTRAR MAPA Y PUNTO EN EL MAPA
 
 router.post("/search", (req, res, next) => {
-  const portId = req.body.infoId; // nos traemos el infoId de axios que fue conseguido por el id del formulario
-  console.log(portId);
+  const portId = req.body.infoId
   Port.findById(portId)
-    .then(thePort => {
-      Boat.find({ port: portId })
-
-        .then(theBoatsPort => res.json({ thePort, boats: theBoatsPort }))
-        .catch(err => console.log("Hubo un error:", err));
-    }) // Pasamos el valor de thePort a axios de nuevo
+    .then( thePort=> res.json({ thePort }))
     .catch(err => console.log("Hubo un error:", err));
-});
+  }) 
+
+
+// ----- FORMULARIO NUEVO BARCO ----------- //
+
 
 //! MUESTRA PORT DROPDOWN EN FORMULARIO DE NEW BOAT
 router.get("/owner/add", (req, res, next) => {
