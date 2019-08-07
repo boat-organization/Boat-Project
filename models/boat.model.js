@@ -7,6 +7,7 @@ const boatModel = new Schema(
     type: String,
     capacity: Number,
     captain: Boolean,
+    owner: { type: Schema.Types.ObjectId, ref: "User" },
     port: { type: Schema.Types.ObjectId, ref: "Port" },
     description: String,
     rate: Number,
@@ -18,8 +19,6 @@ const boatModel = new Schema(
   }
 );
 
-const Boat = mongoose.model("Boat", boatModel)
+const Boat = mongoose.model("Boat", boatModel);
 
-module.exports = Boat
-
-
+module.exports = Boat;

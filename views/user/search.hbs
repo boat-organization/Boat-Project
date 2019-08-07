@@ -1,0 +1,57 @@
+<div>
+  <img class="icon-picture" src="{{user.imgPath}}" alt="icon-profile">
+</div>
+<div>
+  <h1>{{user.username}}</h1>
+
+  {{#if isOwner}}
+  <a href="/user/owner/add">Add boat</a>
+  {{/if}}
+
+
+</div>
+<div class="col-md-6">
+  <form action="/user/search" method="POST">
+    <div class="form-group">
+      <label for="homeport-list">Home port</label>
+      <select name="port_id" class="form-control" id="homeport-list">
+        <option>Select</option>
+        {{#each ports}}
+        <option value='{{_id}}'>{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="destinationport-list">Destination port</label>
+      <select name="port_id" class="form-control" id="destinationport-list">
+        <option>Select</option>
+        {{#each ports}}
+        <option value='{{_id}}'>{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div>
+      <label for="date-from-input">From</label>
+      <input name="date" type="date" id="date-from-input" class=" ">
+    </div>
+    <div>
+      <label for="date-to-input">To</label>
+      <input name="date" type="date" id="date-to-input" class=" ">
+    </div>
+    <div class="form-group">
+      <label for="type-input">Type</label>
+      <select name="type" class="form-control" id="type-input" required="true">
+        <option disabled="selected">Select on option</option>
+        <option>Yacht</option>
+        <option>Sailboat</option>
+        <option>Catamaran</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="capacity-input">Capacity</label>
+      <input name="capacity" type="number" class="form-control" id="capacity-input" required="true">
+    </div>
+
+    <button type="submit" class="btn btn-dark">Search</button>
+  </form>
+</div>

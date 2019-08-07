@@ -23,14 +23,13 @@ const debug = require("debug")(
 
 const app = express();
 
-// Middleware Setup
+//! MIDDLERWARE SETUP
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Express View engine setup
-
+//! EXPRESS VIEW ENGINE SETUP
 app.use(
   require("node-sass-middleware")({
     src: path.join(__dirname, "public"),
@@ -54,25 +53,27 @@ hbs.registerHelper("ifUndefined", (value, options) => {
   }
 });
 
-//! CONFIGURE SESSION AUTHENTICATION
+//! ENABLE AUTHENTICATION USING SESSION AND PASSPORT
 app.use(
   session({
-    secret: "im on a boat",
+    secret: "irongenerator",
     resave: true,
     saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60 // 1 day
+    })
   })
 );
 
-//! ERROR HANDLING
+//! REQUIRE FLASH ERROR HANDLER
 app.use(flash());
 require("./passport")(app);
 
 //! DEFAULT TITLE
-app.locals.title = "Boatify";
+app.locals.title = "NauticApp";
 
 //! BASE ROUTES
-
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
@@ -82,7 +83,8 @@ app.use("/auth", authRoutes);
 const boats = require("./routes/boat.routes");
 app.use("/boat", boats);
 
-const profileRoutes = require("./routes/profile.routes");
-app.use("/profile", profileRoutes);
+const userRoutes = require("./routes/user.routes");
+app.use("/user", userRoutes);
 
+//! EXPORT APP
 module.exports = app;

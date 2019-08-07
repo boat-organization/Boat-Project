@@ -1,15 +1,31 @@
 const express = require("express");
 const passport = require("passport");
+const ensureLogin = require("connect-ensure-login"); // Asegurar la sesión para acceso a rutas
 const router = express.Router();
 const User = require("../models/user.model");
-
-const uploadCloud = require("../config/cloudinary.config");
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
+const uploadCloud = require("../config/cloudinary.config");
+
 //! ----------------- ROUTES ----------------- !//
+
+//! LOGIN
+router.get("/login", (req, res, next) => {
+  res.render("auth/login", { message: req.flash("error") });
+});
+
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/user/search",
+    failureRedirect: "/login",
+    failureFlash: true,
+    passReqToCallback: true
+  })
+);
 
 //! SIGNUP
 
@@ -27,7 +43,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
     return;
   }
 
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({ username }).then(user => {
     if (user !== null) {
       res.render("auth/signup", { message: "The username already exists" });
       return;
@@ -48,7 +64,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
     newUser
       .save()
       .then(() => {
-        res.redirect("/");
+        res.redirect("/login");
       })
       .catch(err => {
         res.render("auth/signup", { message: "Something went wrong" });
@@ -56,78 +72,18 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
   });
 });
 
-//! LOGIN
-
-router.get("/login", (req, res, next) => {
-  res.render("auth/login", { message: req.flash("error") });
-});
-
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/user/login",
-    failureFlash: true,
-    passReqToCallback: true
-  })
-);
-
-/*
-router.post("/login", (req, res, next) => {
-  const usernameInput = req.body.username;
-  const passwordInput = req.body.password;
-
-  if (usernameInput === "" || passwordInput === "") {
-    res.render("auth/login", {
-      message: "Enter both username and password to log in."
-    });
-    return;
-  }
-
-  User.findOne({ username: usernameInput }, (err, theUser) => {
-    if (err || theUser === null) {
-      res.render("auth/login", {
-        message: `There isn't an account with username ${usernameInput}.`
-      });
-      return;
-    }
-
-    if (!bcrypt.compareSync(passwordInput, theUser.password)) {
-      res.render("auth/login", {
-        message: "Invalid password."
-      });
-      return;
-    }
-
-    req.session.currentUser = theUser;
-    res.redirect("/");
-  });
-});
-*/
-
 //! LOGOUT
+//Al hacer clickear LOGOUT, te redirige a INDEX
 
-router.get("/logout", (req, res, next) => {
+router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
 
-/*
-  if (!req.session.currentUser) {
-    res.redirect("/");
-    return;
-  }
+//! PRIVATE
 
-  req.session.destroy(err => {
-    if (err) {
-      next(err);
-      return;
-    }
-
-    res.redirect("/");
-  });
-});
-
-*/
+router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) =>
+  res.render("private", { user: req.user })
+);
 
 module.exports = router;

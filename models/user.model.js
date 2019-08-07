@@ -10,7 +10,7 @@ const userSchema = new Schema(
     imgPath: String,
     role: {
       type: String,
-      enum: ["BOAT OWNER", "RENTER"],
+      enum: ["OWNER", "RENTER"],
       default: "RENTER"
     }
   },
