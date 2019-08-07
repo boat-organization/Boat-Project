@@ -13,6 +13,18 @@ function getPorts(map) {
   axios.post('/user/search', { infoId }) //es la misma dirección que la indicada en user.routers '/'
     .then(response => {      //response es el valor de thePort de user.routers
       console.log(response.data); //con .data accedemos a toda la info que contiene el port en la BBDD
+      let parent = document.getElementById("prueba")
+      response.data.thePort.boats.forEach(el => {
+        console.log(el)
+        let newElement = document.createElement("div")
+        let name = document.createElement("div")
+        newElement.innerHTML = el._id
+        name.innerHTML = el.name
+
+        parent.appendChild(newElement)
+        parent.appendChild(name)
+
+      })
       placePorts(response, map);
     })
     .catch(err => console.log(err));
