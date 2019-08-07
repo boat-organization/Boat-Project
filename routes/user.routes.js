@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const User = require("../models/user.model");
 const Port = require("../models/port.model");
 const Boat = require("../models/boat.model");
 
@@ -19,6 +18,8 @@ const uploadCloud = require("../config/cloudinary.config");
 
 //router.get(profile)
 
+//! MUESTRA EL FORMULARIO SEARCH
+
 router.get("/search", (req, res, next) => {
   let isOwner = req.user.role === "OWNER"; // variable para saber si es owner
   Port.find({})
@@ -35,8 +36,7 @@ router.get("/search", (req, res, next) => {
     .catch(err => console.log("Hubo un error:", err));
 });
 
-//! MOSTRAR MAPA Y PUNTO EN EL MAPA
-
+//! MUESTRA EL MAPA & PONE EL MARKER EN EL MAPA
 router.post("/search", (req, res, next) => {
   const portId = req.body.infoId; // nos traemos el infoId de axios que fue conseguido por el id del formulario
   console.log(portId);
@@ -50,7 +50,7 @@ router.post("/search", (req, res, next) => {
     .catch(err => console.log("Hubo un error:", err));
 });
 
-//! MUESTRA PORT DROPDOWN EN FORMULARIO DE NEW BOAT
+//! MUESTRA LOS PORT EN EL DROPDOWN DEL FORMULARIO NEW BOAT
 router.get("/owner/add", (req, res, next) => {
   Port.find({})
     .then(allThePorts =>
@@ -59,7 +59,7 @@ router.get("/owner/add", (req, res, next) => {
     .catch(err => console.log("Hubo un error:", err));
 });
 
-//! CREAMOS NEW BOAT
+//! CREA NEW BOAT
 router.post("/owner/add", uploadCloud.single("photo"), (req, res, next) => {
   const {
     name,
@@ -90,6 +90,52 @@ router.post("/owner/add", uploadCloud.single("photo"), (req, res, next) => {
   }) //port es el nombre de la propiedad del modelo que coge como valor el port_id del formulario
     .then(boat => res.redirect("/")) //index
     .catch(err => console.log("Hubo un error:", err));
+});
+
+//! MOSTRAMOS TODOS LOS BOATS DE ESE USUARIO
+
+router.get("/owner/myBoats", (req, res, next) => {
+  Boat.find({ owner: req.user._id })
+    .populate("port")
+    .then(myBoats => res.render("user/owner/boatIndex", { boat: myBoats }))
+    .catch(err => console.log("There was an error:", err));
+});
+
+//! EDITAMOS UN BOAT DE ESE USUARIO
+
+router.get("/owner/myBoats/edit/:id", (req, res) => {
+  Boat.findById(req.params.id)
+    .then(theBoat => res.render("user/owner/boatEdit", { theBoat }))
+    .catch(err => console.log("There was an error:", err));
+});
+router.post("/owner/myBoats/edit/:id", (req, res) => {
+  const { name, description } = req.body;
+
+  Boat.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: {
+        name,
+        description
+      }
+    },
+    { new: true }
+  )
+    .then(updatedBoat => {
+      res.redirect("/user/owner/myBoats");
+    })
+    .catch(err => console.log("Hubo un error:", err));
+});
+
+//! ELIMINAMOS UN BOAT DE ESE USUARIO
+
+router.post("/owner/myBoats/delete/:id", (req, res, next) => {
+  //console.log(req.params.id);
+  Boat.findByIdAndRemove(req.params.id)
+    .then(() => res.redirect("/user/owner/myBoats"))
+    .catch(function(err) {
+      console.log("Hubo un error:", err);
+    });
 });
 
 module.exports = router;
