@@ -340,8 +340,6 @@ window.onload = () => {
 
 function getPorts(map) {
   const infoId = document.getElementById("homeport-list").value; //el valor sale del formulario
-  const infoId2 = document.getElementById("destinationport-list").value;
-  console.log({ infoId });
 
   axios
     .post("/user/search", { infoId }) //es la misma dirección que la indicada en user.routers '/'
@@ -375,7 +373,7 @@ function getPorts(map) {
         rate.innerHTML = `Rate: ${el.rate} €/day`;
         button.setAttribute(
           "href",
-          `https://nauticapp.herokuapp.com/user/search/reserve/${el._id}`
+          `http://localhost:3000/user/search/reserve/${el._id}`
         );
 
         parent.appendChild(name);
@@ -401,7 +399,7 @@ function placePorts(response, map) {
   };
 
   map.setCenter(locatedAt);
-  map.setZoom(8);
+  map.setZoom(7);
 
   const icon = {
     url: "/images/boat-orange.png",
@@ -417,16 +415,11 @@ function placePorts(response, map) {
     icon: icon
   });
 
-  marker.addListener("click", function() {
-    map.setZoom(8);
-    map.setCenter(marker.getPosition());
-  });
-
-  map.addListener("center_changed", function() {
-    // 3 seconds after the center of the map has changed, pan back to the
-    // marker.
-    window.setTimeout(function() {
-      map.panTo(marker.getPosition());
-    }, 3000);
-  });
+  // map.addListener("center_changed", function() {
+  //   // 3 seconds after the center of the map has changed, pan back to the
+  //   // marker.
+  //   window.setTimeout(function() {
+  //     map.panTo(marker.getPosition());
+  //   }, 3000);
+  // });
 }

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Port = require("../models/port.model");
 const Boat = require("../models/boat.model");
-const User = require("../models/user.model")
+const User = require("../models/user.model");
 
 const uploadCloud = require("../config/cloudinary.config");
 
@@ -35,12 +35,10 @@ router.get("/search", (req, res, next) => {
     .catch(err => console.log("Hubo un error:", err));
 });
 
-
-//! MUESTRA EL MAPA, PONE EL MARKER EN EL MAPA Y 
+//! MUESTRA EL MAPA, PONE EL MARKER EN EL MAPA Y
 // PINTA LOS BARCOS DEL PUERTO SELECCIONADO A TRAVÉS DEL DOM CON main.js
 router.post("/search", (req, res, next) => {
-  const portId = req.body.infoId
-
+  const portId = req.body.infoId;
 
   Port.findById(portId)
     .populate("boats")
@@ -51,16 +49,14 @@ router.post("/search", (req, res, next) => {
 // RESERVA DEL BARCO
 
 router.get("/search/reserve/:id", (req, res, next) => {
-
   User.findById(req.user._id)
-  .then (user => {
-    Boat.findById(req.params.id)
-    .then(boat => res.render("user/reserve", {user, boat}))
-  })
-  .catch(err => console.log("Hubo un error:", err))
-})
-
-
+    .then(user => {
+      Boat.findById(req.params.id).then(boat =>
+        res.render("user/reserve", { user, boat })
+      );
+    })
+    .catch(err => console.log("Hubo un error:", err));
+});
 
 // ----- FORMULARIO NUEVO BARCO ----------- //
 

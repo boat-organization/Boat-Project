@@ -14,7 +14,38 @@
           <input name="name" type="text" class="form-control" id="name-input" placeholder="{{theBoat.name}}">
         </div>
 
-        {{!-- <div class="form-group">
+
+
+        <div class="form-group">
+          <label for="description-input">Description</label>
+          <textarea name="description" class="form-control" id="description-input"
+            placeholder="{{theBoat.description}}"></textarea>
+        </div>
+        <button type="submit">Save</button>
+
+
+      </form>
+
+
+
+    </div>
+
+  </div>
+</div>
+
+
+{{!-- <div class="form-group">
+          <label for="rate-input">Rate</label>
+          <input name="rate" type="number" placeholder="{{boat.rate}}" class=" form-control" id="rate-input">
+        </div>
+
+        <div>
+          <label for="photo-input">Image</label>
+          <input type="file" name="photo" id="photo-input"><br><br>
+        </div> --}}
+
+
+{{!-- <div class="form-group">
           <label for="type-input">Type</label>
           <select name="type" class="form-control" id="type-input">
             <option disabled=" selected">Select on option</option>
@@ -24,7 +55,7 @@
           </select>
         </div>
  --}}
-        {{!-- <div class="form-group">
+{{!-- <div class="form-group">
           <label for="capacity-input">Capacity</label>
           <input name="capacity" type="number" class="form-control" id="capacity-input" placeholder="{{boat.capacity}}">
         </div>
@@ -45,29 +76,3 @@
             {{/each}}
           </select>
         </div> --}}
-
-        <div class="form-group">
-          <label for="description-input">Description</label>
-          <textarea name="description" class="form-control" id="description-input"
-            placeholder="{{theBoat.description}}"></textarea>
-        </div>
-
-        {{!-- <div class="form-group">
-          <label for="rate-input">Rate</label>
-          <input name="rate" type="number" placeholder="{{boat.rate}}" class=" form-control" id="rate-input">
-        </div>
-
-        <div>
-          <label for="photo-input">Image</label>
-          <input type="file" name="photo" id="photo-input"><br><br>
-        </div> --}}
-
-      </form>
-
-      <button type="submit" class="btn btn-dark">Save</button>
-
-
-    </div>
-
-  </div>
-</div>

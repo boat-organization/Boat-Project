@@ -3,7 +3,7 @@ const Boat = require("../models/boat.model");
 require("dotenv").config();
 
 const dbName = "boatproject"; //nombre de la colección en la BBDD
-mongoose.connect(process.env.DB_REMOTE, { useNewUrlParser: true });
+mongoose.connect(process.env.DB_LOCAL, { useNewUrlParser: true });
 Boat.collection.drop();
 
 const boats = [

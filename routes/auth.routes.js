@@ -1,8 +1,8 @@
 const express = require("express");
 const passport = require("passport");
-const ensureLogin = require("connect-ensure-login"); // Asegurar la sesión para acceso a rutas
 const router = express.Router();
 const User = require("../models/user.model");
+const ensuredLoggedIn = require("connect-ensure-login");
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -75,15 +75,9 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
 //! LOGOUT
 //Al hacer clickear LOGOUT, te redirige a INDEX
 
-router.get("/logout", (req, res) => {
+router.get("/logout", ensureLogin.ensureLogin(), (req, res) => {
   req.logout();
   res.redirect("/");
 });
-
-//! PRIVATE
-
-router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) =>
-  res.render("private", { user: req.user })
-);
 
 module.exports = router;
