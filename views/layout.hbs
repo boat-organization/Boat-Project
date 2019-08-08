@@ -13,17 +13,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a href="/">Home</a>
   <a href="/about">About us</a>
-  <a href="/restaurant/show">Restaurants</a>
-  {{#if restaurantRole}}
+  <a href="/user/search">Menu</a>
+  {{!-- {{#if restaurantRole}}
   <a href="/restaurant/add">New Boat</a>
   {{/if}}
   {{#if isUserLoggedIn}}
   <a href="/profile/users">Owner</a>
-  <a href="/auth/logout">Logout</a>
-  {{else}}
+  {{else}} 
+   {{/if}}
+  --}}
   <a href="/auth/login">Login</a>
   <a href="/auth/signup">Signup</a>
-  {{/if}}
+  <a href="/auth/logout">Logout</a>
 </nav>
 
 
