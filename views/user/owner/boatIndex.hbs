@@ -5,13 +5,15 @@
 
 
   {{#each boat}}
-  <h4>{{name}}</h4>
-  <p>{{description}}</p>
+  <h4>Name: {{name}}</h4>
   <img class="boat-picture" src="{{imgPath}}" alt="boat">
-  <p>{{description}}</p>
-  <p> {{port.name}}</p>
+  <p>Description: {{description}}</p>
+  <p>Hoem Port: {{port.name}}</p>
+  <p>Capacity: {{capacity}}</p>
+  <p>Daily price: {{rate}}</p>
 
-  <a href="/user/owner/myBoats/edit/{{_id}}">Edit</a>
+
+  <a href="/user/owner/myBoats/edit/{{_id}}" class="button">Edit</a>
 
   <form action="/user/owner/myBoats/delete/{{_id}}" method="post">
     <button type="submit" class="btn btn-dark">Delete</button>

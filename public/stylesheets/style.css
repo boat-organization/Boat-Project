@@ -1,6 +1,7 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f5f5f5; }
 
 a {
   color: #00b7ff; }
@@ -11,8 +12,19 @@ a {
   border-radius: 50%; }
 
 figure {
-  height: 400px;
+  height: 600px;
   width: 1200px;
   margin: 0 auto; }
+
+.button {
+  display: block;
+  width: 115px;
+  height: 25px;
+  background: #4e9caf;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */
