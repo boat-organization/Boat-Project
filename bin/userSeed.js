@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = require("../models/user.model");
+require("dotenv").config();
 
 const dbName = "boatproject"; //nombre de la colección en la BBDD
 mongoose.connect(process.env.DB_REMOTE, { useNewUrlParser: true });

@@ -14,7 +14,7 @@ const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 
 require("./config/mongoose.config");
-require("./config/cloudinary.config");
+// require("./config/cloudinary.config");
 
 const app_name = require("./package.json").name;
 const debug = require("debug")(
@@ -73,7 +73,6 @@ require("./passport")(app);
 //! DEFAULT TITLE
 app.locals.title = "NauticApp";
 app.locals.apiGoogle = process.env.GOOGLE_API;
-
 
 //! BASE ROUTES
 const indexRoutes = require("./routes/index.routes");
