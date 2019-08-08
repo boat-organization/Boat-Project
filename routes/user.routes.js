@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Port = require("../models/port.model");
 const Boat = require("../models/boat.model");
+const User = require("../models/user.model")
 
 const uploadCloud = require("../config/cloudinary.config");
 
@@ -19,7 +20,6 @@ const uploadCloud = require("../config/cloudinary.config");
 //router.get(profile)
 
 //! MUESTRA EL FORMULARIO SEARCH
-
 router.get("/search", (req, res, next) => {
   let isOwner = req.user.role === "OWNER"; // variable para saber si es owner
   Port.find({})
@@ -35,28 +35,32 @@ router.get("/search", (req, res, next) => {
     .catch(err => console.log("Hubo un error:", err));
 });
 
-// MOSTRAR BARCOS CUYO PUERTO ES EL ELEGIDO EN EL MAPA!!
 
-router.post("/search/:id", (req, res, next) => {
-  Boat.find({ port: "5d49c5163c5a5e1ee00ae370" })
-    .then(boatsInPort => {
-      console.log(boatsInPort);
-      res.render("user/search", { boats: boatsInPort });
-    })
-    .catch(err => console.log("Hubo un error:", err));
-});
-
-//! MUESTRA EL MAPA & PONE EL MARKER EN EL MAPA
+//! MUESTRA EL MAPA, PONE EL MARKER EN EL MAPA Y 
+// PINTA LOS BARCOS DEL PUERTO SELECCIONADO A TRAVÉS DEL DOM CON main.js
 router.post("/search", (req, res, next) => {
-  const portId = req.body.infoId;
+  const portId = req.body.infoId
+
+
   Port.findById(portId)
     .populate("boats")
-    .then(thePort => {
-      console.log(thePort);
-      res.json({ thePort });
-    })
+    .then(thePort => res.json({ thePort }))
     .catch(err => console.log("Hubo un error:", err));
 });
+
+// RESERVA DEL BARCO
+
+router.get("/search/reserve/:id", (req, res, next) => {
+
+  User.findById(req.user._id)
+  .then (user => {
+    Boat.findById(req.params.id)
+    .then(boat => res.render("user/reserve", {user, boat}))
+  })
+  .catch(err => console.log("Hubo un error:", err))
+})
+
+
 
 // ----- FORMULARIO NUEVO BARCO ----------- //
 
@@ -103,7 +107,7 @@ router.post("/owner/add", uploadCloud.single("photo"), (req, res, next) => {
         .populate("boats")
         .then(port => {
           console.log(port.boats);
-          res.redirect("/");
+          res.redirect("/user/owner/myBoats");
         });
     }) //index
     .catch(err => console.log("Hubo un error:", err));
