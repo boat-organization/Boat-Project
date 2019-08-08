@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "dev": "DEBUG=boat-project:* nodemon ./bin/www",
+    "start": "node ./bin/www",
+    "dev": "DEBUG=boat-project:* node ./bin/www",
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
