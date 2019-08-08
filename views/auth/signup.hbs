@@ -1,26 +1,27 @@
-<section class="box">
-  <h2>Signup</h2>
+<img src="/images/background.jpg" class="img-background">
+
+<section class="box form-login">
+  <h2 class="signup-title">Signup</h2>
 
   <form action="/auth/signup" method="POST" enctype="multipart/form-data" id="form-container">
-    <label for="username-input">Username</label>
+  <div class="form-sign-flex">
+    <label for="username-input" class="label">Username</label>
     <input id="username-input" type="text" name="username" placeholder="Username">
 
-
-
-    <label for="password-input">Password</label>
+    <label for="password-input" class="label">Password</label>
     <input id="password-input" type="password" name="password" placeholder="">
 
-    <label for="email-input"> Email</label>
+    <label for="email-input" class="label"> Email</label>
     <input id="email-input" type="email" name="email" placeholder="johnhancockw@ironhack.com">
 
-    <label for="role-input">Who are you?</label>
+    <label for="role-input" class="label">Who are you?</label>
     <select name="role" id="role-input">
       <option value="RENTER">Renter</option>
       <option value="OWNER">Owner</option>
     </select>
+  </div>
 
-
-    <label for="menu-input">Profile Picture</label>
+    <label for="menu-input" class="label">Profile Picture</label><br>
     <input id="menu-input" type="file" name="photo" placeholder="" required></article>
     <br>
     {{#if message }}
@@ -29,7 +30,7 @@
 
 
 
-    <button type="submit" class="btn btn-dark">Signup</button>
+    <button type="submit" class="btn btn-dark btn-signup">Signup</button>
 
     <p class="account-message">
       Do you already have an account?
