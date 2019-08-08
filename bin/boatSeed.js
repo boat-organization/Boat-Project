@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Boat = require("../models/boat.model");
 
 const dbName = "boatproject"; //nombre de la colección en la BBDD
-mongoose.connect(`mongodb://localhost/${dbName}`, { useNewUrlParser: true });
+mongoose.connect(process.env.DB_REMOTE, { useNewUrlParser: true });
 Boat.collection.drop();
 
 const boats = [

@@ -72,6 +72,8 @@ require("./passport")(app);
 
 //! DEFAULT TITLE
 app.locals.title = "NauticApp";
+app.locals.apiGoogle = process.env.GOOGLE_API;
+
 
 //! BASE ROUTES
 const indexRoutes = require("./routes/index.routes");
