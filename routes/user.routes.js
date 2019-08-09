@@ -111,7 +111,7 @@ router.post("/owner/add", uploadCloud.single("photo"), (req, res, next) => {
 
 //! MOSTRAMOS TODOS LOS BOATS DE ESE USUARIO
 
-router.get("/owner/myBoats", (req, res, next) => {
+router.get("/owner/myBoats", uploadCloud.single("photo"), (req, res, next) => {
   Boat.find({ owner: req.user._id })
     .populate("port")
     .then(myBoats => res.render("user/owner/boatIndex", { boat: myBoats }))

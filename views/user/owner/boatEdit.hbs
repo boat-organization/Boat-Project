@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row">
+  <div class="row edit">
+
     <div class="col-md-6">
       <h1 style="font-weight: 100">
-        <h1 id="name-edit">Edit your boat {{theBoat.name}}</h1>
+        <h1 id="name-edit">Edit your boat</h1>
     </div>
 
     <div class="col-md-6">
-
       <form action="/user/owner/myBoats/edit/{{theBoat._id}}" method="POST">
 
         <div class="form-group">
@@ -15,12 +15,26 @@
         </div>
 
 
-
         <div class="form-group">
           <label for="description-input">Description</label>
           <textarea name="description" class="form-control" id="description-input"
             placeholder="{{theBoat.description}}"></textarea>
         </div>
+
+
+        <div class="form-group">
+          <label for="capacity-input">Capacity</label>
+          <input name="capacity" type="number" class="form-control" id="capacity-input">
+        </div>
+
+        <div class="form-group">
+          <label for="rate-input">Rate</label>
+          <input name="rate" type="number" placeholder="{{theBoat.rate}} €" class="form-control" id="rate-input">
+        </div>
+
+
+
+
         <button type="submit">Save</button>
 
 

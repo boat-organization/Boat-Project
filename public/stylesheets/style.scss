@@ -1,12 +1,12 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #f9f9f9;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 // nav-bar
 .logo {
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-size: 2em;
   margin-left: 2em;
 }
@@ -15,19 +15,19 @@ body {
   text-decoration: none;
 }
 a {
-  color:  #f9f9f9;
-  font-family: 'Raleway', sans-serif;
+  color: #f9f9f9;
+  font-family: "Raleway", sans-serif;
   margin-right: 2em;
   text-decoration: none;
   font-size: 1.2em;
 }
-a:hover  {
-  text-decoration: none
+a:hover {
+  text-decoration: none;
 }
 
 // Index
 .logo-principal {
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-size: 8em;
   color: rgb(252, 242, 242);
   position: absolute;
@@ -39,7 +39,7 @@ a:hover  {
   font-size: 1.5em;
   top: 55%;
   left: 42%;
-  color:  rgb(252, 242, 242);
+  color: rgb(252, 242, 242);
   margin-right: 20px;
 }
 .fill-fullscreen {
@@ -103,15 +103,6 @@ a:hover  {
 
 // SEARCH
 
-
-
-
-
-
-
-
-
-
 figure {
   height: 600px;
   width: 1200px;
@@ -127,4 +118,42 @@ figure {
   border-radius: 5px;
   color: white;
   font-weight: bold;
+}
+
+// EDIT BOAT
+.edit {
+  margin-top: 180px;
+}
+
+// ADD BOAT
+.add-form {
+  margin-top: 50px;
+}
+
+.add-title {
+  margin-top: 70px;
+}
+
+//RESERVE
+
+.reservation-form {
+  width: fit-content;
+  background-color: rgba(120, 192, 191, 0.4);
+  text-align: center;
+  border-radius: 5%;
+  padding: 20px 35px;
+}
+
+.reservation-title {
+  margin-top: 80px;
+  text-align: left;
+}
+
+.reservation-full {
+  margin-top: 50px;
+}
+
+.pairs {
+  padding: 5px 0px;
+  border-top: 1px solid rgba(120, 192, 191, 0.4);
 }

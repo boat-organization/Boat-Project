@@ -1,29 +1,58 @@
-<h1>Booking confirmation</h1>
-<h2>¡Congratulation {{user.username}}!<h2>
-<h4>Booking details</h4>
+<div class="container">
+  <div class="row">
 
-  <div class="form-group">
-      <option>Your boat</option>
+    <div class="col-md-6 reservation-title">
+      <h1>Booking confirmation</h1>
+      <h2>Congratulation {{user.username}}!</h2>
+    </div>
 
-      <h2>{{boat.name}}</h2>
-      <h4>Description</h4>
-      <p>{{boat.description}}</p>
-      <h4>Type</h4>
-      <p>{{boat.type}}</p>
-      <h4>Capacity</h4>
-      <p>{{boat.capacity}} seats</p>
-      <h4>Captain</h4>
-      <p>{{boat.captain}}</p>
+    <div class="col-md-6 reservation-full">
+      <div class="reservation-form">
+        <h2>Booking details</h2>
 
-      <h4>Price</h4>
-      <p>{{boat.rate}} €/day</p>
+        <div class="pairs">
 
-      <h4>Have a nice trip!</h4>
+          <h4>Your boat</h4>
+          <p>{{boat.name}}</p>
+        </div>
 
-      <a href="/">Accept</a>
+        <div class="pairs">
 
+          <h4>Description</h4>
+          <p>{{boat.description}}</p>
+        </div>
 
+        <div class="pairs">
 
- 
-    </select>
+          <h4>Type</h4>
+          <p>{{boat.type}}</p>
+        </div>
+
+        <div class="pairs">
+
+          <h4>Capacity</h4>
+          <p>{{boat.capacity}} seats</p>
+        </div>
+
+        <div class="pairs">
+
+          <h4>Captain</h4>
+          <p>{{boat.captain}}</p>
+        </div>
+
+        <div class="pairs">
+
+          <h4>Price</h4>
+          <p>{{boat.rate}} €/day</p>
+        </div>
+
+        <div class="pairs">
+
+          <h5>Have a nice trip!</h5>
+        </div>
+
+        <a class="anchor-black" href="/">Accept</a>
+      </div>
+    </div>
   </div>
+</div>

@@ -1,10 +1,10 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #f9f9f9;
-  font-family: 'Raleway', sans-serif; }
+  font-family: "Raleway", sans-serif; }
 
 .logo {
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-size: 2em;
   margin-left: 2em; }
 
@@ -14,7 +14,7 @@ body {
 
 a {
   color: #f9f9f9;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   margin-right: 2em;
   text-decoration: none;
   font-size: 1.2em; }
@@ -23,7 +23,7 @@ a:hover {
   text-decoration: none; }
 
 .logo-principal {
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-size: 8em;
   color: #fcf2f2;
   position: absolute;
@@ -107,5 +107,32 @@ figure {
   border-radius: 5px;
   color: white;
   font-weight: bold; }
+
+.edit {
+  margin-top: 180px; }
+
+.add-form {
+  margin-top: 50px; }
+
+.add-title {
+  margin-top: 70px; }
+
+.reservation-form {
+  width: fit-content;
+  background-color: rgba(120, 192, 191, 0.4);
+  text-align: center;
+  border-radius: 5%;
+  padding: 20px 35px; }
+
+.reservation-title {
+  margin-top: 80px;
+  text-align: left; }
+
+.reservation-full {
+  margin-top: 50px; }
+
+.pairs {
+  padding: 5px 0px;
+  border-top: 1px solid rgba(120, 192, 191, 0.4); }
 
 /*# sourceMappingURL=style.css.map */

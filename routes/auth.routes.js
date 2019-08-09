@@ -3,12 +3,11 @@ const passport = require("passport");
 const router = express.Router();
 const User = require("../models/user.model");
 const ensuredLoggedIn = require("connect-ensure-login");
+const uploadCloud = require("../config/cloudinary.config");
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
-
-const uploadCloud = require("../config/cloudinary.config");
 
 //! ---------------- ROUTES ---------------- !//
 
@@ -76,7 +75,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
 //! LOGOUT
 //Al hacer clickear LOGOUT, te redirige a INDEX
 
-router.get("/logout", ensureLogin.ensureLogin(), (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
