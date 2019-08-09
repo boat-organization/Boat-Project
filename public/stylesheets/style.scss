@@ -162,6 +162,10 @@ a:hover {
 }
 
 // ADD BOAT
+.new-boot {
+  font-size: 3.5em;
+  margin-top: 1.2em;
+}
 .add-form {
   margin-top: 50px;
 }
@@ -171,27 +175,68 @@ a:hover {
 }
 
 //RESERVE
-
-.reservation-form {
-  width: fit-content;
-  background-color: rgba(120, 192, 191, 0.4);
-  text-align: center;
-  border-radius: 5%;
-  padding: 20px 35px;
+.photo-reserve {
+  width: 80%;
 }
-
 .reservation-title {
-  margin-top: 80px;
-  text-align: left;
+  margin-top: 1.5em;
+  text-align: center;
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  color: #f9f9f9;
+  // color:  #519897;
+}
+.reservation-title h1 {
+  margin-bottom: 0.5em;
+}
+.reservation-form {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 2em;
+  border-radius: 25px;
+  color:  #59898c;
+
+}
+.details {
+  margin-left: 1.1em;
+  padding-top: 1em;
+  font-size: 2em;
+  text-decoration: underline;
+  color:  #48c1bf;
+}
+.pairs {
+  display: flex;
+  align-items: center;
+  padding-left: 20em;
+}
+.pairs h4 {
+  color: #48c1bf;
+}
+.pairs p {
+margin-left: .9em;
+margin-top: .5em;
+font-size: 0.9em;
+ 
+}
+.accept-final {
+  text-align: center;
+  position: absolute;
+  top: 68%;
+  left: 35%;
 }
 
+.accept-final a {
+  font-size: 2.6em;
+  margin-right: -0.4em;
+  color: #48c1bf;
+
+}
 .reservation-full {
   margin-top: 50px;
-}
-
-.pairs {
-  padding: 5px 0px;
-  border-top: 1px solid rgba(120, 192, 191, 0.4);
 }
 .boats {
   color: #78c0bf;

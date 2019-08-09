@@ -1,58 +1,45 @@
-<div class="container">
-  <div class="row">
+<img class="img-background" src="/images/fondo-reserve.jpg">
 
-    <div class="col-md-6 reservation-title">
+
+<div class="">
+    <div class="reservation-title">
       <h1>Booking confirmation</h1>
       <h2>Congratulation {{user.username}}!</h2>
     </div>
 
-    <div class="col-md-6 reservation-full">
-      <div class="reservation-form">
-        <h2>Booking details</h2>
 
+    <div class="reservation-form">
+      <h2 class="details">Booking details</h2>
         <div class="pairs">
-
           <h4>Your boat</h4>
           <p>{{boat.name}}</p>
         </div>
-
         <div class="pairs">
-
           <h4>Description</h4>
           <p>{{boat.description}}</p>
         </div>
-
         <div class="pairs">
-
           <h4>Type</h4>
           <p>{{boat.type}}</p>
         </div>
-
         <div class="pairs">
-
           <h4>Capacity</h4>
           <p>{{boat.capacity}} seats</p>
         </div>
-
         <div class="pairs">
-
           <h4>Captain</h4>
           <p>{{boat.captain}}</p>
         </div>
-
         <div class="pairs">
-
           <h4>Price</h4>
           <p>{{boat.rate}} €/day</p>
         </div>
-
-        <div class="pairs">
-
-          <h5>Have a nice trip!</h5>
-        </div>
-
-        <a class="anchor-black" href="/">Accept</a>
-      </div>
+           
     </div>
-  </div>
+      <div class="accept-final">
+        <a class="anchor-black" href="/">Accept</a>
+        {{!-- <h5>Have a nice trip!</h5> --}}
+      </div>
+     
+      </div>
 </div>
