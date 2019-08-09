@@ -142,7 +142,7 @@ a:hover {
   padding: 10px;
   text-align: center;
   border-radius: 5px;
-  color: white;
+  color: #fcf2f2;
   font-weight: bold; }
 
 .edit {
@@ -198,5 +198,18 @@ a:hover {
 .parent3 a {
   font-size: 1.8em;
   color: #2fb1af; }
+
+.boat-picture {
+  width: 40%; }
+
+.btn {
+  background-color: #78c0bf;
+  color: #fcf2f2; }
+
+.index-buttons {
+  display: inline-flex; }
+
+.index-title {
+  margin: 50px 0 0 80px; }
 
 /*# sourceMappingURL=style.css.map */

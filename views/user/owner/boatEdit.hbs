@@ -11,25 +11,28 @@
 
         <div class="form-group">
           <label for="name-input">Name</label>
-          <input name="name" type="text" class="form-control" id="name-input" placeholder="{{theBoat.name}}">
+          <input name="name" type="text" class="form-control" id="name-input" placeholder="{{theBoat.name}}"
+            required="true">
         </div>
 
 
         <div class="form-group">
           <label for="description-input">Description</label>
-          <textarea name="description" class="form-control" id="description-input"
-            placeholder="{{theBoat.description}}"></textarea>
+          <textarea name="description" class="form-control" id="description-input" placeholder="{{theBoat.description}}"
+            required="true"></textarea>
         </div>
 
 
         <div class="form-group">
           <label for="capacity-input">Capacity</label>
-          <input name="capacity" type="number" class="form-control" id="capacity-input">
+          <input name="capacity" type="number" placeholder="{{theBoat.capacity}}" class=" form-control"
+            id="capacity-input" required="true">
         </div>
 
         <div class="form-group">
           <label for="rate-input">Rate</label>
-          <input name="rate" type="number" placeholder="{{theBoat.rate}} €" class="form-control" id="rate-input">
+          <input name="rate" type="number" placeholder="{{theBoat.rate}} €" class="form-control" id="rate-input"
+            required="true">
         </div>
 
 
