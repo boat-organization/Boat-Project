@@ -350,12 +350,21 @@ function getPorts(map) {
       //-----  PINTAMOS LOS BARCOS DEL PUERTO SELECCIONADO ------------
 
       let parent = document.getElementById("boatsList"); //es el id del <div> de la vista
-      response.data.thePort.boats.forEach(el => {
-        // es la response que nos traemos del backend user.router.js
+      response.data.thePort.boats.forEach(el => {      // es la response que nos traemos del backend user.router.js
         console.log(el); //el = barco
 
-        let name = document.createElement("h3");
+        let parent2 = document.createElement("div");
+        parent2.setAttribute("class", "parent2")
+
+        let parent3 = document.createElement("div");
+        parent3.setAttribute("class", "parent3")
+
+        let parentPhoto = document.createElement("div");
+        parentPhoto.setAttribute("class", "parentPhoto")
+
+
         let photo = document.createElement("img");
+        let name = document.createElement("h3");
         let type = document.createElement("h5");
         let capacity = document.createElement("h5");
         let captain = document.createElement("h5");
@@ -363,29 +372,34 @@ function getPorts(map) {
         let rate = document.createElement("h5");
         let button = document.createElement("a");
 
-        name.innerHTML = el.name;
+
         photo.setAttribute("src", el.imgPath);
-        photo.style.width = "50%";
+        photo.style.width = "100%";
+        name.innerHTML = el.name;
         type.innerHTML = `Type: ${el.type}`;
         capacity.innerHTML = `Capacity: ${el.capacity}`;
         captain.innerHTML = `Captain: ${el.captain}`;
         description.innerHTML = `Description: ${el.description}`;
         rate.innerHTML = `Rate: ${el.rate} €/day`;
-        button.setAttribute(
-          "href",
-          `http://localhost:3000/user/search/reserve/${el._id}`
-        );
+        button.setAttribute("href",`http://localhost:3000/user/search/reserve/${el._id}`);
+    
+     
+        parent.appendChild(parent2);
+        parent2.appendChild(parent3);
+        parent2.appendChild(parentPhoto);
 
-        parent.appendChild(name);
-        parent.appendChild(photo);
-        parent.appendChild(type);
-        parent.appendChild(capacity);
-        parent.appendChild(captain);
-        parent.appendChild(description);
-        parent.appendChild(rate);
-        parent.appendChild(button);
+  
+        parentPhoto.appendChild(photo);
+        parent3.appendChild(name);
+        parent3.appendChild(type);
+        parent3.appendChild(capacity);
+        parent3.appendChild(captain);
+        parent3.appendChild(description);
+        parent3.appendChild(rate);
+        parent3.appendChild(button);
         button.appendChild(document.createTextNode("Reserve"));
       });
+
       placePorts(response, map);
     })
 
@@ -398,8 +412,9 @@ function placePorts(response, map) {
     lng: response.data.thePort.location.coordinates[0]
   };
 
+
   map.setCenter(locatedAt);
-  map.setZoom(7);
+  map.setZoom(8);
 
   const icon = {
     url: "/images/boat-orange.png",

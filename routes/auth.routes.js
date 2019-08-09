@@ -76,7 +76,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
 //! LOGOUT
 //Al hacer clickear LOGOUT, te redirige a INDEX
 
-router.get("/logout", ensureLogin.ensureLogin(), (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });

@@ -54,14 +54,13 @@ a:hover  {
   position: absolute;
   top: 15%;
   left: 38%;
-  background-color: rgb(252, 242, 242);
-  opacity: 0.6;
+  background-color: rgba(217, 244, 241, 0.4);
   text-align: center;
   margin: 2em, 1.5em, 2em, 1.5em;
   border-radius: 5%;
 }
 .login-title {
-  margin-top: 1.5em;
+  margin-top: 1em;
   margin-bottom: 1em;
 }
 .account-message {
@@ -102,19 +101,47 @@ a:hover  {
 }
 
 // SEARCH
-
-
-
-
-
-
-
-
-
-
-figure {
-  height: 600px;
-  width: 1200px;
+.icon-picture {
+  width: 7%;
+  border-radius: 50%;
+  margin-top: 2em;
+  margin-left: 4em;
+}
+.anchor-black {
+  color: #78c0bf;
+}
+.user-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.name {
+  font-size: 3em;
+}
+.name-user {
+  margin-left: 2em;
+}
+.form-search {
+  margin-left: 2.5em;
+  margin-right: 2.5em;
+  margin-top: 2.5em;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2em;
+}
+.date {
+  height: 40px;
+  border-radius: 5%;
+}
+.btn-search {
+  background-color: #78c0bf;
+  border: none;
+  height: 40px;
+  margin-top: 1.5em;
+}
+.map {
+  height: 450px;
+  width: 1300px;
   margin: 0 auto;
 }
 .button {
@@ -128,3 +155,35 @@ figure {
   color: white;
   font-weight: bold;
 }
+.boats {
+  color: #78c0bf;
+  text-align: center;
+  margin-top: 1.5em;
+}
+.dom {
+  margin-top: 4em;
+}
+.parent2 {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin-bottom: 3em;
+
+}
+.parentPhoto {
+  width: 30%;
+  margin-left: 19em;
+}
+.parent3 {
+  width: 30%;
+  margin-right: 19em;
+  margin-top: .6em;
+}
+.parent3 a {
+  font-size: 1.8em;
+  color: #2fb1af;
+}
+
+
+
+

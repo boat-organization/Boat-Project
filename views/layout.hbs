@@ -17,15 +17,13 @@
 
   <a href="/" class="logo">nauticapp</a>
   <div class="nav-bar-flex">
-
-    <a href="/user/search" class="elem-nav">Search</a>
-
+    
     {{#if isLoggedOut}}
-    <a href="/auth/login" class="elem-nav">Login</a>
-    <a href="/auth/signup" class="elem-nav">Signup</a>
-
+      <a href="/auth/login" class="elem-nav">Login</a>
+      <a href="/auth/signup" class="elem-nav">Signup</a>
     {{else}}
-    <a href="/auth/logout" class="elem-nav">Logout</a>
+      <a href="/user/search" class="elem-nav">Search</a>
+      <a href="/auth/logout" class="elem-nav">Logout</a>
     {{/if}}
   </div>
 
