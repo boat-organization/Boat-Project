@@ -1,18 +1,15 @@
-<div>
+<div class="user-flex">
   <img class="icon-picture" src="{{user.imgPath}}" alt="icon-profile">
+  <div class="name-user">
+    <h1 class="name">{{user.username}}</h1>
+    {{#if isOwner}}
+    <a href="/user/owner/add" class="anchor-black">Add boat</a>
+    <a href="/user/owner/myBoats" class="anchor-black">My boats</a>
+    {{/if}}
+  </div>
 </div>
-<div>
-  <h1>{{user.username}}</h1>
 
-  {{#if isOwner}}
-  <a href="/user/owner/add">Add boat</a>
-  <a href="/user/owner/myBoats">My boats</a>
-  {{/if}}
-
-
-</div>
-<div class="col-md-6">
-
+<div class="form-search">
   {{!-- <form action="/user/search/" method="POST"> --}}
   <div class="form-group">
     <label for="homeport-list">Home port</label>
@@ -33,12 +30,12 @@
     </select>
   </div>
   <div>
-    <label for="date-from-input">From</label>
-    <input name="date" type="date" id="date-from-input" class=" ">
+    <label for="date-from-input">From</label><br>
+    <input name="date" type="date" id="date-from-input" class="date">
   </div>
   <div>
-    <label for="date-to-input">To</label>
-    <input name="date" type="date" id="date-to-input" class=" ">
+    <label for="date-to-input">To</label><br>
+    <input name="date" type="date" id="date-to-input" class="date">
   </div>
   <div class="form-group">
     <label for="type-input">Type</label>
@@ -54,16 +51,15 @@
     <input name="capacity" type="number" class="form-control" id="capacity-input" required="true">
   </div>
 
-  <button type="submit" class="btn btn-dark" id="elboton">Search</button>
+  <button type="submit" class="btn btn-dark btn-search" id="elboton">Search</button>
   {{!-- </form> --}}
 </div>
 
-<figure id="map"></figure>
+<figure id="map" class="map"></figure>
 
 
 <div>
-  <h1>Boats</h1>
+  <h1 class="boats">Boats</h1>
   {{!-- Pintamos los barcos con DOM (ver -> main.js) --}}
-  <div class="container" id="boatsList"></div>
-
+  <div id="boatsList" class="dom"></div>
 </div>
